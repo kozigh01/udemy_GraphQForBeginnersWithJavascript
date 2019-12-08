@@ -4,7 +4,6 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: ./db
-    # image: 'postgres:latest'
     restart: unless-stopped
     hostname: postgres
     environment: 
