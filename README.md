@@ -6,7 +6,7 @@
 - Source Code: [github](https://github.com/knowthen/graphql)
 - Graphiql: [site](https://gql.trythen.com/graphiql)
   - cntl-space: shows list of fields
-- Apollo GraphQL: [site](https://www.apollographql.com/) | [client](https://www.apollographql.com/client/)
+- Apollo GraphQL: [site](https://www.apollographql.com/) | [client](https://www.apollographql.com/client/) | [conver to 2.0](https://www.apollographql.com/docs/apollo-server/migration-two-dot/)
 - Docker: [compose](https://docs.docker.com/compose/compose-file/)
     - postgres: [compose example](https://stackoverflow.com/questions/53266285/connecting-pgadmin-to-postgres-in-docker) | [dockerhub](https://hub.docker.com/_/postgres)
     - pgAdmin: [connect](https://stackoverflow.com/questions/25540711/docker-postgres-pgadmin-local-connection) | [volume](https://stackoverflow.com/questions/57174830/pgadmin-creates-new-random-volume-with-each-docker-compose-up)
@@ -85,6 +85,10 @@ $ docker exec -it <container id> sh
 
 #### hackerbookreview_starter
 ```cmd
-$ npx babel-node ./src/server.js "{ hello }
+$ npx babel-node ./src/server.js "{ hello }"
 ```
-
+#### Section 7
+```cmd
+$ npm install --save-dev nodemon
+$ npm install --save-dev @babel/core @babel/node
+```
