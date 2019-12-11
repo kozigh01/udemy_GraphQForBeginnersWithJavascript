@@ -1,21 +1,20 @@
 // @ts-check
 import query from './db';
 
-const books = [
-    {
-        id: 1,
-        title: 'some book title',
-        description: 'some book description',
-        imageUrl: 'img.png',
-        rating: 5
+async function allBooks() {
+    const sql = `
+        select * from hb.book;
+    `;
+    
+    try {
+        const result = await query(sql);
+        return result.rows;
+    } catch(err) {
+        console.log(err);
+        throw err;
     }
-]
-
-function allBooks() {
-    // TODO: Query books from DB
-    return books;
 }
 
 export {
     allBooks  
-} ;
+};

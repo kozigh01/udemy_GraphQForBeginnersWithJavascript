@@ -14,9 +14,11 @@ type Query {
 type Book {
     id: ID!
     title: String!
+    subtitle: String!
     description: String!
     imageUrl: String!
     rating: Float
+    ratingCount: Int
 }
 `;
 

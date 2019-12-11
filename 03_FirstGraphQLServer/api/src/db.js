@@ -3,8 +3,10 @@
 import { Pool } from 'pg';
 
 const pool = new Pool({
-    host: 'localhost',
-    database: 'hackerbook'
+    host: 'postgres',
+    database: 'hackerbook',
+    password: 'postgres',
+    user: 'postgres'
 });
 
 async function query(sql, params) {

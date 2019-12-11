@@ -3,8 +3,7 @@ import { allBooks } from './book';
 
 const resolvers = {
     Book: {
-        title: book => `A resolved title - ${book.title}`,
-        description: () => 'A resolved description'
+        ratingCount: book => book.rating_count
     },
     Query: {
         hello: () => 'World',
