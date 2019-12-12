@@ -13,7 +13,6 @@
 - Postgres: [project setup](https://gist.github.com/knowthen/21a5959d6b99e04d73c8b2416e405bb0)
 - Blogs:
     - Christoffer Noring: 
-        - [Building your first GraphQL Server](https://itnext.io/building-your-first-graphql-server-d5c4f88f5e82?)
         - [Building a GraphQL Server with Node.js and Express](https://softchris.github.io/pages/graphql-express.html#why-graphql)
         - [Creating a GraphQL Server with Apollo](https://dev.to/azure/creating-a-graphql-server-withapollo-jjj)
 
