@@ -6,7 +6,7 @@
 - Source Code: [github](https://github.com/knowthen/graphql)
 - Graphiql: [site](https://gql.trythen.com/graphiql)
   - cntl-space: shows list of fields
-- Apollo GraphQL: [site](https://www.apollographql.com/) | [client](https://www.apollographql.com/client/) | [conver to 2.0](https://www.apollographql.com/docs/apollo-server/migration-two-dot/)
+- Apollo GraphQL: [site](https://www.apollographql.com/) | [client](https://www.apollographql.com/client/) | [conver to 2.0](https://www.apollographql.com/docs/apollo-server/migration-two-dot/) | [tutorial](https://www.apollographql.com/docs/tutorial/introduction/)
 - Docker: [compose](https://docs.docker.com/compose/compose-file/)
     - postgres: [compose example](https://stackoverflow.com/questions/53266285/connecting-pgadmin-to-postgres-in-docker) | [dockerhub](https://hub.docker.com/_/postgres)
     - pgAdmin: [connect](https://stackoverflow.com/questions/25540711/docker-postgres-pgadmin-local-connection) | [volume](https://stackoverflow.com/questions/57174830/pgadmin-creates-new-random-volume-with-each-docker-compose-up)
@@ -16,6 +16,7 @@
     - Christoffer Noring: 
         - [Building a GraphQL Server with Node.js and Express](https://softchris.github.io/pages/graphql-express.html#why-graphql)
         - [Creating a GraphQL Server with Apollo](https://dev.to/azure/creating-a-graphql-server-withapollo-jjj)
+- GraphQL cheatsheet: [devhints.io](https://devhints.io/graphql#schema)
 
 ## Commands
 
