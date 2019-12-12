@@ -16,9 +16,19 @@ type Book {
     title: String!
     subtitle: String!
     description: String!
-    imageUrl: String!
+    imageUrl(size: ImageSize = LARGE): String!
     rating: Float
     ratingCount: Int
+    authors: [Author]
+}
+type Author {
+    id: ID!
+    name: String
+}
+
+enum ImageSize {
+    SMALL
+    LARGE
 }
 `;
 

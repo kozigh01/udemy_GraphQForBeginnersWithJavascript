@@ -11,6 +11,7 @@
     - postgres: [compose example](https://stackoverflow.com/questions/53266285/connecting-pgadmin-to-postgres-in-docker) | [dockerhub](https://hub.docker.com/_/postgres)
     - pgAdmin: [connect](https://stackoverflow.com/questions/25540711/docker-postgres-pgadmin-local-connection) | [volume](https://stackoverflow.com/questions/57174830/pgadmin-creates-new-random-volume-with-each-docker-compose-up)
 - Postgres: [project setup](https://gist.github.com/knowthen/21a5959d6b99e04d73c8b2416e405bb0)
+- Google book api: [example](https://www.googleapis.com/books/v1/volumes?q=zero+to+one)
 - Blogs:
     - Christoffer Noring: 
         - [Building your first GraphQL Server](https://itnext.io/building-your-first-graphql-server-d5c4f88f5e82?)
