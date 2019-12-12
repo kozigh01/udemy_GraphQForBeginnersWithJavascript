@@ -34,7 +34,8 @@ services:
     volumes:
       - /app/node_modules
       - ./api:/app
-    tty: true
+    ports:
+      - "4000:4000"
 
 volumes:
   db-data:
