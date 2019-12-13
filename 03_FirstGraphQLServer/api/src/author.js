@@ -1,6 +1,31 @@
 // @ts-check
 
+import { groupBy, map } from 'rambda';
+import DataLoader from 'dataloader';
 import query from './db';
+
+async function findAuthorsByBookIds(bookIds) {
+    const sql = `
+        select hb.author.*, hb.book_author.book_id
+        from hb.author
+            inner join hb.book_author on hb.author.id = hb.book_author.author_id
+        where hb.book_author.book_id = ANY($1)
+    `;    
+    const params = [bookIds];
+    try {
+        const result = await query(sql, params);
+        const rowsById = groupBy(author => author.bookId, result.rows);
+        console.log('result.rows::', result.rows);
+        return map(id => rowsById[id], bookIds);
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+}
+
+function findAuthorByBookIdsLoader() {
+    return new DataLoader(findAuthorsByBookIds);
+}
 
 async function authorsByBookId(id) {
     const sql = `
@@ -21,5 +46,7 @@ async function authorsByBookId(id) {
 };
 
 export {
-    authorsByBookId
+    authorsByBookId,
+    findAuthorsByBookIds,
+    findAuthorByBookIdsLoader
 }

@@ -5,12 +5,23 @@ import { ApolloServer, gql } from 'apollo-server-express';
 import cors from 'cors';
 import typeDefs from './typedefs';
 import resolvers from './resolvers';
+import { findAuthorByBookIdsLoader } from './author';
 
 const PORT = 4000;
 const app = express();
 app.use(cors());
 
-const server = new ApolloServer({ typeDefs, resolvers});
+const server = new ApolloServer({ 
+    typeDefs, 
+    resolvers,
+    context: async ({ req, res}) => {
+        return {
+            dataloaders: {
+                findAuthorByBookIdsLoader: findAuthorByBookIdsLoader()
+            }
+        }
+    }
+});
 server.applyMiddleware({ app });
 
 app.listen(PORT, () => {
