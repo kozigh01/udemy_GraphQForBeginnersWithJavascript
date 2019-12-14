@@ -9,8 +9,8 @@ schema {
 type Query {
     hello: String!
     name: String!
-    books: [Book!]
-    reviews: [Review!]
+    books(orderBy: BooksOrderBy = RATING_DESC): [Book!]
+    reviews(orderBy: ReviewsOrderBy = ID_DESC): [Review!]
 }
 type Book {
     id: ID!
@@ -42,6 +42,14 @@ type User {
 enum ImageSize {
     SMALL
     LARGE
+}
+enum BooksOrderBy {
+    RATING_DESC
+    ID_DESC
+}
+enum ReviewsOrderBy {
+    ID_ASC
+    ID_DESC
 }
 `;
 

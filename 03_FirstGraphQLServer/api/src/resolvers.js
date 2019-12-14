@@ -26,11 +26,11 @@ const resolvers = {
     Query: {
         hello: () => 'World',
         name: () => 'James',
-        books: () => {
-            return allBooks();
+        books: (root, args) => {
+            return allBooks(args);
         },
-        reviews: () => {
-            return allReviews();
+        reviews: (root, args) => {
+            return allReviews(args);
         }
     }
 }
