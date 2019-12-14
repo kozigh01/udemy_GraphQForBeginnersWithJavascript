@@ -37,7 +37,20 @@ services:
       - ./api:/app
     ports:
       - "4000:4000"
-
+  web:
+    image: mkozi/gql-web
+    restart: unless-stopped
+    build: 
+      dockerfile: Dockerfile.dev
+      context: ./web
+    environment: 
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - /app/node_modules
+      - ./web:/app
+    ports:
+      - "3000:3000"
+      - "35729:35729"
 volumes:
   db-data:
   pgadmin:

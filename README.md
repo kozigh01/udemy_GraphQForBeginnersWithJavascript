@@ -98,3 +98,46 @@ $ npx babel-node ./src/server.js "{ hello }"
 $ npm install --save-dev nodemon
 $ npm install --save-dev @babel/core @babel/node
 ```
+
+### Graphiql 
+
+#### Section 7.41
+```
+query HomePage($bookOrder: BooksOrderBy) {
+  books(orderBy: $bookOrder) {
+    ...Book
+    imageUrl
+    authors {
+      name
+    }
+  }
+  reviews {
+    ...Review
+    book {
+      ...Book
+      imageUrl(size: SMALL)
+    }
+  }
+}
+
+fragment Book on Book {
+  id
+  title
+  description
+  rating
+}
+fragment Review on Review {
+  id
+  title
+  rating
+  comment
+  user {
+    name
+  }
+}
+
+# Query Variables
+{
+  "booksOrder": "RATING_DESC"
+}
+```
