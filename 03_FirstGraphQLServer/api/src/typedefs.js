@@ -10,6 +10,7 @@ type Query {
     hello: String!
     name: String!
     books(orderBy: BooksOrderBy = RATING_DESC): [Book!]
+    book(id: ID!): Book
     reviews(orderBy: ReviewsOrderBy = ID_DESC): [Review!]
 }
 type Book {

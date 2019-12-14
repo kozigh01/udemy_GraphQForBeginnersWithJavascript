@@ -4,10 +4,11 @@ import { BookListSection, SORT_BY } from './components/Book';
 import Error from './components/Error';
 import { RecentReviewSection } from './components/Review';
 import data from './data/';
+import fetch from './fetch';
 
 const query = `
-query HomePage($bookOrder: BooksOrderBy) {
-  books(orderBy: $bookOrder) {
+query HomePage($orderBy: BooksOrderBy) {
+  books(orderBy: $orderBy) {
     ...Book
     imageUrl
     authors {
@@ -55,13 +56,14 @@ class Home extends Component {
   }
   async loadData() {
     try {
-      // TODO: query actual books and reviews from graphql
-      const books = data.books;
-      const reviews = data.reviews;
-      const errors = [];
       // eslint-disable-next-line
       const { orderBy } = this.state;
       const variables = { orderBy };
+      const result = await fetch({ query, variables });
+      const books = R.path(['data', 'books'], result);
+      const reviews = R.path(['data', 'reviews'], result)
+      const errorList = R.pathOr([], ['errors'], result);
+      const errors = R.map(err => err.message, errorList);
       this.setState({
         books,
         reviews,

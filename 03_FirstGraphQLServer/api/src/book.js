@@ -25,6 +25,22 @@ async function allBooks(args) {
     }
 }
 
+async function getBook(args) {
+    const sql = `
+        select * 
+        from hb.book
+        where id = $1
+    `;
+    const params = [args.id];
+    try {
+        const result = await query(sql, params);
+        return result.rows[0];
+    } catch(err) {
+        console.log(err);
+        throw err;
+    }
+}
+
 function imageUrl(size, id) {
     const zoom = size === 'SMALL' ? 1 : 0;
     return `http://books.google.com/books/content?id=${id}&printsec=frontcover&img=1&zoom=${zoom}&edge=curl&source=gbs_api`;
@@ -52,6 +68,7 @@ function findBookByIdLoader() {
 
 export {
     allBooks,
+    getBook,
     imageUrl,
     findBookByIdLoader
 };

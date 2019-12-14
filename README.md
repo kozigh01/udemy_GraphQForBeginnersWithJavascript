@@ -103,8 +103,8 @@ $ npm install --save-dev @babel/core @babel/node
 
 #### Section 7.41
 ```
-query HomePage($bookOrder: BooksOrderBy) {
-  books(orderBy: $bookOrder) {
+query HomePage($orderBy: BooksOrderBy) {
+  books(orderBy: $orderBy) {
     ...Book
     imageUrl
     authors {
@@ -138,6 +138,6 @@ fragment Review on Review {
 
 # Query Variables
 {
-  "booksOrder": "RATING_DESC"
+  "orderBy": "RATING_DESC"
 }
 ```

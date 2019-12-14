@@ -1,5 +1,5 @@
 // @ts-check
-import { allBooks, imageUrl } from './book';
+import { allBooks, getBook, imageUrl } from './book';
 import { allReviews } from './review';
 // import { authorsByBookId } from './author';
 
@@ -28,6 +28,9 @@ const resolvers = {
         name: () => 'James',
         books: (root, args) => {
             return allBooks(args);
+        },
+        book: (root, args) => {
+            return getBook(args);
         },
         reviews: (root, args) => {
             return allReviews(args);
