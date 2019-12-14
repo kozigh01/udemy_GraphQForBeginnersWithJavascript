@@ -12,6 +12,7 @@ const resolvers = {
             return findAuthorByBookIdsLoader.load(book.id); // this caches the list of book ids and only queries for authors once
             // authorsByBookId(book.id); // this is the inefficient way
         }
+        // reviews: (book, args, { dataloaders })
     },
     Review: {
         book: (review, args, { dataloaders }) => {
@@ -29,8 +30,9 @@ const resolvers = {
         books: (root, args) => {
             return allBooks(args);
         },
-        book: (root, args) => {
-            return getBook(args);
+        book: (root, args, { dataloaders }) => {
+            const { findBookByIdLoader } = dataloaders;
+            return findBookByIdLoader.load(args.id);
         },
         reviews: (root, args) => {
             return allReviews(args);
