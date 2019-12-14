@@ -1,6 +1,7 @@
 // @ts-check
 import { allBooks, imageUrl } from './book';
-import { authorsByBookId } from './author';
+import { allReviews } from './review';
+// import { authorsByBookId } from './author';
 
 const resolvers = {
     Book: {
@@ -8,8 +9,18 @@ const resolvers = {
         authors: (book, args, context) => {
             const { dataloaders } = context;
             const { findAuthorByBookIdsLoader } = dataloaders;
-            return findAuthorByBookIdsLoader.load(book.id);
-            // authorsByBookId(book.id);
+            return findAuthorByBookIdsLoader.load(book.id); // this caches the list of book ids and only queries for authors once
+            // authorsByBookId(book.id); // this is the inefficient way
+        }
+    },
+    Review: {
+        book: (review, args, { dataloaders }) => {
+            const { findBookByIdLoader } = dataloaders;
+            return findBookByIdLoader.load(review.bookId);
+        },
+        user: (review, args, { dataloaders }) => {
+            const { findUserByIdsLoader } = dataloaders;
+            return findUserByIdsLoader.load(review.userId);
         }
     },
     Query: {
@@ -17,6 +28,9 @@ const resolvers = {
         name: () => 'James',
         books: () => {
             return allBooks();
+        },
+        reviews: () => {
+            return allReviews();
         }
     }
 }
