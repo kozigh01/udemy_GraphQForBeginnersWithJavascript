@@ -29,7 +29,7 @@ async function findBookById(ids) {
     const params = [ids];
     try {
         const result = await query(sql, params);
-        const rowsById = groupBy(row => row.id, result.rows);
+        const rowsById = groupBy(book => book.id, result.rows);
         return map(id => rowsById[id] ? rowsById[id][0] : null, ids);
     } catch(err) {
         console.log(err);

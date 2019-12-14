@@ -13,9 +13,7 @@ async function findUserByIds(userIds) {
     const params = [ userIds ];
     try {
         const result = await query(sql, params);
-        const rowsById = groupBy(row => row.id, result.rows);
-        console.log('findUserByIds::', rowsById);
-        console.log('findUserByIds::', userIds);
+        const rowsById = groupBy(user => user.id, result.rows);
         return map(id => rowsById[id] ? rowsById[id][0] : null, userIds);
     } catch(err) {
         console.log(err);
