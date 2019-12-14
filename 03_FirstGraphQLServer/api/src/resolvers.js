@@ -1,18 +1,25 @@
 // @ts-check
-import { allBooks, getBook, imageUrl } from './book';
+
+import gravatar from 'gravatar';
+import { allBooks, imageUrl } from './book';
 import { allReviews } from './review';
-// import { authorsByBookId } from './author';
 
 const resolvers = {
+    User: {
+        imageUrl: (user, { size }) => gravatar.url(user.email, { s: size }),
+
+    },
     Book: {
         imageUrl: (book, { size }) => imageUrl(size, book.googleId),
         authors: (book, args, context) => {
             const { dataloaders } = context;
             const { findAuthorByBookIdsLoader } = dataloaders;
             return findAuthorByBookIdsLoader.load(book.id); // this caches the list of book ids and only queries for authors once
-            // authorsByBookId(book.id); // this is the inefficient way
+        },
+        reviews: (book, args, { dataloaders }) => {
+            const { findReviewByBookIdsLoader } = dataloaders;
+            return findReviewByBookIdsLoader.load(book.id);
         }
-        // reviews: (book, args, { dataloaders })
     },
     Review: {
         book: (review, args, { dataloaders }) => {

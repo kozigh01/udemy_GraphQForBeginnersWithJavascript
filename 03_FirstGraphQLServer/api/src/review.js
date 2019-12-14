@@ -1,5 +1,7 @@
 // @ts-check
 import query from './db';
+import DataLoader from 'dataloader';
+import { groupBy, map } from 'rambda';
 
 const ORDER_BY = {
     ID_ASC: 'id asc',
@@ -22,6 +24,29 @@ async function allReviews(args) {
     }
 }
 
+async function findReviewByBookIds(bookIds) {
+    const sql = `
+        select hb.review.*
+        from hb.review
+        where hb.review.book_id = ANY($1)
+        order by hb.review.id DESC
+    `;
+    const params = [bookIds];
+    try {
+        const result = await query(sql, params);
+        const rowsById = groupBy(review => review.bookId , result.rows);
+        return map(id => rowsById[id] , bookIds);
+    } catch(err) {
+        console.log(err);
+        throw err;
+    }
+}
+
+function findReviewByBookIdsLoader() {
+    return new DataLoader(findReviewByBookIds);
+}
+
 export {
-    allReviews
+    allReviews,
+    findReviewByBookIdsLoader
 }

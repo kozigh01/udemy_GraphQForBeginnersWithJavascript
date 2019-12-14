@@ -22,6 +22,7 @@ type Book {
     rating: Float
     ratingCount: Int
     authors: [Author]
+    reviews: [Review]
 }
 type Author {
     id: ID!
@@ -38,6 +39,7 @@ type Review {
 type User {
     id: ID!
     name: String!
+    imageUrl(size: Int = 50): String
 }
 
 enum ImageSize {

@@ -141,3 +141,26 @@ fragment Review on Review {
   "orderBy": "RATING_DESC"
 }
 ```
+
+#### Section 7.45
+```
+query BookPage {
+  book(id: "1") {
+    id
+    title
+    description
+    imageUrl
+    rating
+    reviews {
+      id
+      title
+      comment
+      rating
+      user {
+        name
+        imageUrl
+      }
+    }
+  }
+}
+```
