@@ -1,6 +1,3 @@
-import { gql } from 'apollo-server-express';
-
-const typedefs = gql`
 schema {
     query: Query
     mutation: Mutation
@@ -24,7 +21,9 @@ type Query {
     book(id: ID!): Book
     reviews(orderBy: ReviewsOrderBy = ID_DESC): [Review!]
     searchBook(query: String!): [SearchBookResult!]
+    search(query: String!): [SearchResult]
 }
+union SearchResult = Book | Review | Author | User
 type Book {
     id: ID!
     title: String!
@@ -73,6 +72,3 @@ enum ReviewsOrderBy {
     ID_ASC
     ID_DESC
 }
-`;
-
-export default typedefs;

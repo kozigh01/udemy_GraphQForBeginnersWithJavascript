@@ -270,3 +270,29 @@ mutation CreateBook($googleBookId: ID!) {
 	"googleBookId": "tth-DwAAQBAJ"
 }
 ```
+
+#### Section 7.54
+```graphql
+query {
+  search(query: "Peter") {
+    __typename
+    ... on Book {
+      id
+      title
+    }
+    ... on Review {
+      id
+      rating
+      comment
+    }
+    ... on User {
+      id
+      name
+    }
+    ... on Author {
+      id
+      authName: name
+    }
+  }
+}
+```

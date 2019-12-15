@@ -1,9 +1,10 @@
 // @ts-check
 
 import express from 'express';
-import { ApolloServer, gql } from 'apollo-server-express';
+import { ApolloServer } from 'apollo-server-express';
+import { importSchema } from 'graphql-import';
 import cors from 'cors';
-import typeDefs from './typedefs';
+// import typeDefs from './typedefs';
 import resolvers from './resolvers';
 import loaders from './loader';
 
@@ -12,7 +13,7 @@ const app = express();
 app.use(cors());
 
 const server = new ApolloServer({ 
-    typeDefs, 
+    typeDefs: importSchema('src/schema.graphql'), 
     resolvers,
     context: async ({ req, res}) => {
         return {

@@ -3,6 +3,7 @@
 import gravatar from 'gravatar';
 import { allBooks, imageUrl, searchBook, createBook } from './book';
 import { allReviews, createReview } from './review';
+import { search } from './search';
 
 const resolvers = {
     User: {
@@ -11,6 +12,9 @@ const resolvers = {
     },
     SearchBookResult: {
         imageUrl: (result, args) => imageUrl(args.size, result.id)
+    },
+    SearchResult: {
+        __resolveType: obj => obj.__type
     },
     Book: {
         imageUrl: (book, { size }) => imageUrl(size, book.googleId),
@@ -49,6 +53,10 @@ const resolvers = {
         },
         searchBook: (root, { query }) => {
             return searchBook(query);
+        },
+        search: (root, args) => {
+            const { query } = args;
+            return search(query);
         }
     },
     Mutation: {
