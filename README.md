@@ -234,15 +234,24 @@ mutation CreateReview($reviewInput: ReviewInput!) {
 }
 ```
 
-#### Section 7.50
+#### Section 7.51
 ```graphql
-query SearchBook {
-  searchBook(query: "Hunger Games") {
+fragment SearchBook on SearchBookResult {
     id
     title
     description
-    imageUrl
     authors
+    imageUrl  
+}
+
+query SearchBook($query: String!) {
+  searchBook(query: $query) {
+		...SearchBook
   }
+}
+
+# variables
+{
+  "query": "Hunger Games"
 }
 ```
