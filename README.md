@@ -164,3 +164,85 @@ query BookPage {
   }
 }
 ```
+
+#### Section 7.46
+```graphql
+fragment Book on Book {
+  id
+  title
+  description
+  imageUrl
+  rating
+}
+
+fragment Review on Review {
+  id
+  title
+  rating
+  comment
+  user {
+    name
+    imageUrl
+  }
+}
+
+query Book($id: ID!) {
+  book(id: $id) {
+    ...Book
+    reviews {
+      ...Review
+    }
+    authors {
+      name
+    }
+  }
+}
+
+# query variables
+{
+  "id": "1"
+}
+```
+
+#### Section 7.48
+```graphql
+mutation CreateReview($reviewInput: ReviewInput!) {
+  createReview(reviewInput: $reviewInput) {
+    id
+    title
+    comment
+    rating
+    book {
+      title
+    }
+    user {
+      name
+    }
+  }
+}
+
+# variables
+{
+  "reviewInput": {
+    "bookId": "1",
+    "rating": 3,
+    "name": "Mark",
+    "email": "mark@test.com",
+    "title": "My first review",
+    "comment": "This is the comment for my first review"
+  }
+}
+```
+
+#### Section 7.50
+```graphql
+query SearchBook {
+  searchBook(query: "Hunger Games") {
+    id
+    title
+    description
+    imageUrl
+    authors
+  }
+}
+```

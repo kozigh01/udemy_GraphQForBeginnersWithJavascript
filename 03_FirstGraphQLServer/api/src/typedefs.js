@@ -5,6 +5,18 @@ import { gql } from 'apollo-server-express';
 const typedefs = gql`
 schema {
     query: Query
+    mutation: Mutation
+}
+type Mutation {
+    createReview(reviewInput: ReviewInput!): Review
+}
+input ReviewInput {
+    bookId: ID!
+    rating: Int!
+    name: String!
+    email: String!
+    title: String
+    comment: String
 }
 type Query {
     hello: String!
@@ -12,6 +24,7 @@ type Query {
     books(orderBy: BooksOrderBy = RATING_DESC): [Book!]
     book(id: ID!): Book
     reviews(orderBy: ReviewsOrderBy = ID_DESC): [Review!]
+    searchBook(query: String!): [SearchBookResult!]
 }
 type Book {
     id: ID!
@@ -40,6 +53,13 @@ type User {
     id: ID!
     name: String!
     imageUrl(size: Int = 50): String
+}
+type SearchBookResult {
+    id: ID!
+    title: String
+    description: String
+    authors: [String!]
+    imageUrl(size: ImageSize = LARGE): String
 }
 
 enum ImageSize {

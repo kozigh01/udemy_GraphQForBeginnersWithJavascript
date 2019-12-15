@@ -1,13 +1,16 @@
 // @ts-check
 
 import gravatar from 'gravatar';
-import { allBooks, imageUrl } from './book';
-import { allReviews } from './review';
+import { allBooks, imageUrl, searchBook } from './book';
+import { allReviews, createReview } from './review';
 
 const resolvers = {
     User: {
         imageUrl: (user, { size }) => gravatar.url(user.email, { s: size }),
 
+    },
+    SearchBookResult: {
+        imageUrl: (result, args) => imageUrl(args.size, result.id)
     },
     Book: {
         imageUrl: (book, { size }) => imageUrl(size, book.googleId),
@@ -43,6 +46,15 @@ const resolvers = {
         },
         reviews: (root, args) => {
             return allReviews(args);
+        },
+        searchBook: (root, { query }) => {
+            return searchBook(query);
+        }
+    },
+    Mutation: {
+        createReview: (root, args) => {
+            const { reviewInput } = args;
+            return createReview(reviewInput);
         }
     }
 }
