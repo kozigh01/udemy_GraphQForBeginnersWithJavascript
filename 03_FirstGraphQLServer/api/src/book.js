@@ -1,6 +1,7 @@
 // @ts-check
 import query from './db';
 import { groupBy, map, pathOr } from 'rambda';
+import stripTags from 'striptags';
 import DataLoader from 'dataloader';
 import axios from 'axios';
 
@@ -65,9 +66,51 @@ async function searchBook(query) {
     }
 }
 
+async function createBook(googleBookId) {
+    try {
+        const book = await findBookByGoogleId(googleBookId);
+        const {
+            title = '',
+            subtitle = '',
+            description = '',
+            authors = [],
+            pageCount = 0
+        } = book;
+        const sql = `
+            select * from hb.create_book($1, $2, $3, $4, $5, $6)
+        `;
+        const params = [
+            googleBookId,
+            stripTags(title),
+            stripTags(subtitle),
+            stripTags(description),
+            authors,
+            pageCount
+        ];
+        const result = await query(sql, params);
+        return result.rows[0];
+    } catch(err) {
+        console.log(err);
+        throw err;
+    }
+}
+
+async function findBookByGoogleId(googleBookId) {
+    const url = `https://www.googleapis.com/books/v1/volumes/${googleBookId}`;
+    try {
+        const result = await axios(url);
+        const book = pathOr({}, ['data'], result);
+        return { ...book, ...book.volumeInfo };
+    } catch(err) {
+        console.log(err);
+        throw err;
+    }
+}
+
 export {
     allBooks,
     imageUrl,
     findBookByIdLoader,
-    searchBook
+    searchBook,
+    createBook
 };

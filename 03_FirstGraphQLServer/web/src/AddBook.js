@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { pathOr, map } from 'ramda';
+import { pathOr, map, path } from 'ramda';
 import { BookSearchForm, BookSearchResults } from './components/Book';
 import Error from './components/Error';
 import fetch from './fetch';
@@ -20,6 +20,13 @@ query SearchBook($query: String!) {
   }
 }`;
 
+const createBookMutation = `
+mutation CreateBook($googleBookId: ID!) {
+  createBook(googleBookId: $googleBookId) {
+    id
+  }
+}`;
+
 class AddBook extends Component {
   state = {
     term: '',
@@ -35,7 +42,6 @@ class AddBook extends Component {
     // eslint-disable-next-line
     const { term } = this.state;
     try {
-      // TODO: fetch actual search results using graphql
       const variables = { query: term };
       const result = await fetch({ query, variables});
       const results = pathOr([], ['data', 'searchBook'], result);
@@ -48,9 +54,11 @@ class AddBook extends Component {
   };
   addBook = async googleBookId => {
     try {
-      // TODO: add mutation to add book using graphql
-      const redirectBookId = 1;
-      const errors = [];
+      const variables = { googleBookId };
+      const result = await fetch({ query: createBookMutation, variables });
+      const redirectBookId = path(['data', 'createBook', 'id'], result);
+      const errorList = pathOr([], ['errors'], result);
+      const errors = map(err => err.message, errorList);
       this.setState({ redirectBookId, errors });
     } catch (err) {
       this.setState({ errors: [err.message] });

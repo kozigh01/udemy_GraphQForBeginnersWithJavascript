@@ -54,7 +54,6 @@ async function createReview(reviewInput) {
     const params = [bookId, email, name, rating, title, comment];
     try {
         const result = await query(sql, params);
-        console.log(result);
         return result.rows[0];
     } catch(err) {
         console.log(err);

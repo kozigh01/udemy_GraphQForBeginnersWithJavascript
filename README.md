@@ -255,3 +255,18 @@ query SearchBook($query: String!) {
   "query": "Hunger Games"
 }
 ```
+
+#### Section 7.52
+```graphql
+mutation CreateBook($googleBookId: ID!) {
+  createBook(googleBookId: $googleBookId) {
+    id
+    title
+  }
+}
+
+# variables
+{
+	"googleBookId": "tth-DwAAQBAJ"
+}
+```
