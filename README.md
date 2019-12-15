@@ -19,6 +19,18 @@
         - [Creating a GraphQL Server with Apollo](https://dev.to/azure/creating-a-graphql-server-withapollo-jjj)
 - GraphQL cheatsheet: [devhints.io](https://devhints.io/graphql#schema)
 
+## Instructions
+1. Clone the "mkozi" git repo referenced above
+2. Open a terminal (I use git bash) and navigate to the directory that contains the 'docker-compose.yaml' file
+3. run command `$ docker-compose up --build`
+4. Open browser tabs:  
+    1. http://localhost:4000/graphql (this is the Graphiql UI tool)  
+    1. http://localhost:3000/ (this is the sample app)  
+    1. http://localhost:5050/browser/ (this is the pgAdmin tool for working with postgres)  
+        1. User Name: user@domain.com
+        1. Password: SuperSecret
+
+
 ## Commands
 
 ### Misc - Bash
