@@ -1,9 +1,10 @@
 // @ts-check
 
 import gravatar from 'gravatar';
-import { allBooks, imageUrl, searchBook, createBook } from './book';
+import { allBooks, imageUrl, searchBook, createBook, BOOK_ADDED } from './book';
 import { allReviews, createReview } from './review';
 import { search } from './search';
+import { pubsub } from './server';
 
 const resolvers = {
     User: {
@@ -66,6 +67,11 @@ const resolvers = {
         createBook: (root, args) => {
             const { googleBookId } = args;
             return createBook(googleBookId);
+        }
+    },
+    Subscription: {
+        bookAdded: {
+            subscribe: () => pubsub.asyncIterator([BOOK_ADDED])
         }
     }
 }

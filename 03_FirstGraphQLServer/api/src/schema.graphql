@@ -2,6 +2,9 @@ schema {
     query: Query
     mutation: Mutation
 }
+type Subscription {
+    bookAdded: Book
+}
 type Mutation {
     createReview(reviewInput: ReviewInput!): Review
     createBook(googleBookId: ID!): Book

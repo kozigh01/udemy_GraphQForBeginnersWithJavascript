@@ -4,6 +4,9 @@ import { groupBy, map, pathOr } from 'rambda';
 import stripTags from 'striptags';
 import DataLoader from 'dataloader';
 import axios from 'axios';
+import { pubsub } from './server';
+
+export const BOOK_ADDED = 'POST_ADDED';
 
 const ORDER_BY = {
     ID_DESC: 'id desc',
@@ -92,7 +95,9 @@ async function createBook(googleBookId) {
             pageCount
         ];
         const result = await query(sql, params);
-        return result.rows[0];
+        const newBook = result.rows[0];
+        pubsub.publish(BOOK_ADDED, { bookAdded: newBook});
+        return newBook;
     } catch(err) {
         console.log(err);
         throw err;
