@@ -3,7 +3,7 @@
 ## Resources
 
 - Course: [udemy](https://www.udemy.com/course/graphql-for-beginners-with-javascript/)
-- Source Code: [github](https://github.com/knowthen/graphql) | [mkozi](https://github.com/kozigh01/udemy_GraphQForBeginnersWithJavascript)
+- Source Code: [github](https://github.com/knowthen/graphql) | [mkozi](https://github.com/kozigh01/udemy_GraphQForBeginnersWithJavascript) | [subscription how to](https://github.com/daniele-zurico/apollo2-subscriptions-how-to/tree/master/src)
 - Graphql: [GraphQL](https://graphql.org/) | [GraphQL.js](https://graphql.org/graphql-js/)
 - Graphiql: [site](https://gql.trythen.com/graphiql)
   - cntl-space: shows list of fields

@@ -159,3 +159,14 @@ fragment Review on Review {
   }
 }  
 ```
+
+### 07 Subscription
+```graphql
+subscription NewBook {
+  bookAdded {
+    id
+    title
+    description
+  }
+}
+```
