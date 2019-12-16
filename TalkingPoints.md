@@ -102,9 +102,23 @@ query BookWParam($id: ID!) {
   }
 }
 
+query BooksWParams($orderBy: BooksOrderBy, $limit: Int) {
+  books(orderBy: $orderBy, count: $limit) {
+    id
+    title
+    imageUrl
+    rating
+    reviews {
+      comment
+    }
+  }
+}
+
 # variables
 {
-  "id": 1
+  "id": 1,
+  "orderBy": "RATING_DESC",
+  "limit": 3
 }
 ```
 
