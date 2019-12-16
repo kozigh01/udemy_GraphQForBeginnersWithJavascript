@@ -23,13 +23,18 @@
 1. Clone the "mkozi" git repo referenced above
 2. Open a terminal (I use git bash) and navigate to the directory that contains the 'docker-compose.yaml' file
 3. run command `$ docker-compose up --build`
+    1. If you run into an issue related to "drive sharing failed for an unknown reason", then do the folowing:
+        1. In the system tray, right click on the docker whale and click "Shared Drives".
+        1. On the "Shared Drives" screen, Click the "Shared" box for the C drive.
 4. Open browser tabs:  
     1. http://localhost:4000/graphql (this is the Graphiql UI tool)  
     1. http://localhost:3000/ (this is the sample app)  
     1. http://localhost:5050/browser/ (this is the pgAdmin tool for working with postgres)  
         1. User Name: user@domain.com
         1. Password: SuperSecret
-
+5. If desired, the following Visual Studio Code extensions are helpful:
+    1. GraphQL (by Prisma: https://marketplace.visualstudio.com/items?itemName=Prisma.vscode-graphql
+)
 
 ## Commands
 
