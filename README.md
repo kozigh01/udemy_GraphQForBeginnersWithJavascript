@@ -17,7 +17,11 @@
     - Christoffer Noring: 
         - [Building a GraphQL Server with Node.js and Express](https://softchris.github.io/pages/graphql-express.html#why-graphql)
         - [Creating a GraphQL Server with Apollo](https://dev.to/azure/creating-a-graphql-server-withapollo-jjj)
-- GraphQL cheatsheet: [devhints.io](https://devhints.io/graphql#schema)
+- GraphQL cheatsheet: [devhints.io](https://devhints.io/graphql#schema)  
+- Subscriptions:
+    - [not finding websocket with subscriptions](https://github.com/apollographql/apollo-server/issues/1844)
+    - [apollo docs: Subscriptions with Additional Middleware](https://github.com/apollographql/apollo-server/issues/1844)
+
 
 ## Instructions
 1. Clone the "mkozi" git repo referenced above
