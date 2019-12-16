@@ -40,11 +40,10 @@ const resolvers = {
     },
     Query: {
         hello: () => 'World',
-        name: () => 'James',
         books: (root, args) => {
             return allBooks(args);
         },
-        book: (root, args, { dataloaders }) => {
+        book: (root, args, { dataloaders }, info) => {
             const { findBookByIdLoader } = dataloaders;
             return findBookByIdLoader.load(args.id);
         },

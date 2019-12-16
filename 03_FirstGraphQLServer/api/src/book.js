@@ -12,11 +12,15 @@ const ORDER_BY = {
 
 async function allBooks(args) {
     const orderBy = ORDER_BY[args.orderBy];
+    const count = args.count;
+    const takeClause = count > 0 ? `limit ${count}` : '';
     const sql = `
         select * 
         from hb.book
-        order by ${orderBy};
+        order by ${orderBy}
+        ${takeClause};
     `;
+
     
     try {
         const result = await query(sql);

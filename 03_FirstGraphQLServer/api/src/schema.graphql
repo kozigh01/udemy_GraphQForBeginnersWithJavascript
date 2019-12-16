@@ -16,8 +16,7 @@ input ReviewInput {
 }
 type Query {
     hello: String!
-    name: String!
-    books(orderBy: BooksOrderBy = RATING_DESC): [Book!]
+    books(orderBy: BooksOrderBy = RATING_DESC, count: Int! = -1): [Book!]
     book(id: ID!): Book
     reviews(orderBy: ReviewsOrderBy = ID_DESC): [Review!]
     searchBook(query: String!): [SearchBookResult!]
