@@ -42,8 +42,11 @@ query BooksAll {
 ### 02 Books
 
 ```graphql
-query {
-  hello
+query Books {
+  books {
+    id
+    title
+  }
 }
 ```
 
@@ -88,6 +91,22 @@ query Book {
         name
       }
     }
+  }
+}
+```
+
+### 04.5 Book With Alias
+```graphql
+query BookWAlias {
+  book1: book(id: 1) {
+    id
+    title
+    description
+  },
+  book2: book(id: 2) {
+    id
+    title
+    description
   }
 }
 ```
@@ -158,15 +177,21 @@ fragment Review on Review {
     name
   }
 }  
+
+# variables
+{
+  "orderBy": "RATING_DESC"
+}
 ```
 
 ### 07 Subscription
 ```graphql
-subscription NewBook {
+subscription BookAdded {
   bookAdded {
     id
     title
     description
+    rating
   }
 }
 ```
