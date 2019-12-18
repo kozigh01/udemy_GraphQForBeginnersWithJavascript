@@ -2,17 +2,19 @@
 
 ## Intereting Qualities of GraphQL
 
-1. Built in tool to explore endpoint - Graphiql
+1. Built in tool to explore endpoint - GraphQL Playground
     1. Schema
     1. Docs
     1. Shift-tab intellisense
 1. Strongly typed contract between client and server
     1. Uses a explicit Schema - must opt-in for all data
     1. Allows for "self-documenting" and discoverability
+1. Graphql servers can be implemented in many different languages.
 1. Extensible - can generate new "types"
 1. Can avoid over-fetching
 1. Can avoid under-fetching
 1. Can return multiple results in one query - so can get all data for a client page is one web request
+1. Has option to use "Subscriptions" for push type notifications
 
 ## Features of GraphQL
 

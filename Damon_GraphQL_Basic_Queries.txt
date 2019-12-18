@@ -1,0 +1,51 @@
+#QUERY WITH ALL BOOKS
+#Query returns all books with title, subtitle, description, rating. No nested data
+query D0
+{
+  books
+	{
+    id,title,subtitle,description,rating
+	}
+}
+
+#QUERY WITH MANY TO 1 RELATIONSHIPS
+#Query returns all books with all data from above, but incorporates authos, reviews,
+#and users that can have a many to 1 relationship with books
+query D1
+{
+  books
+{
+    id,title,subtitle,description,rating, authors{id,name},reviews{id,title,comment, user{id, name}}
+  }
+}
+
+#PASSING SINGLE PARAMETER
+#Query returns all books with all data from above, but incorporates authos, reviews,
+#and users that can have a many to 1 relationship with books, but limits the results
+#to the book where the book ID = 1.
+query D2
+{
+  book(id: 1)
+  {
+    id,title,subtitle,description,rating,authors{id,name},reviews{id,title,comment, user{id, name}}
+  }
+}
+
+#PASSING MULTIPLE PARAMETERS RETURNING TWO SEPARTE SETS OF DATA (BOOKS THEN REVIEWS)
+#Query returns all books with all data from above, but incorporates author, reviews,
+#and users that can have a many to 1 relationship with books, but limits the results
+#to the book where the book ID = 1.  The two parameters sorts ratings in descending
+#order and reviews in ascending order.
+query D3
+{
+  books(orderBy: RATING_DESC){id,title,subtitle,description,rating},
+  reviews(orderBy: ID_ASC){id,title,comment, user{id,name}}
+}
+
+#PASSING MULTIPLE PARAMETERS RETURNING TWO SEPARTE SETS OF DATA (BOOKS THEN REVIEWS)
+#Query returns book with BookID=1 and all of the reviews sorted in descending order.
+query D4
+{
+  book(id: 1){title,subtitle,description,rating,authors{id,name}}
+  ,reviews(orderBy: ID_DESC){id,title,comment, user{id,name}}  
+}
