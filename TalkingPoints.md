@@ -1,6 +1,6 @@
 # GraphQL
 
-## Intereting Qualities of GraphQL
+## Interesting Qualities of GraphQL
 
 1. Built in tool to explore endpoint - GraphQL Playground
     1. Schema
@@ -15,6 +15,14 @@
 1. Can avoid under-fetching
 1. Can return multiple results in one query - so can get all data for a client page is one web request
 1. Has option to use "Subscriptions" for push type notifications
+
+## Differences with Restful API
+
+1. GraphQL uses a query language to determine the data to be returned from the api
+2. GraphQL avoids overfetching / underfetching
+1. GraphQL DataLoader can be used to avoid the N + 1 problem
+1. GraphQL uses one single endpoint
+1. GraphQL servers typically include a "GraphQL Playground" by default, which can be used with the strongly typed schemas to automatically povide a tool for discovery / documentation
 
 ## Features of GraphQL
 
