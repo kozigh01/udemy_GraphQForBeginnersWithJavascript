@@ -2,13 +2,16 @@ schema {
     query: Query
     mutation: Mutation
 }
+
 type Subscription {
     bookAdded: Book
 }
+
 type Mutation {
     createReview(reviewInput: ReviewInput!): Review
     createBook(googleBookId: ID!): Book
 }
+
 input ReviewInput {
     bookId: ID!
     rating: Int!
@@ -17,6 +20,7 @@ input ReviewInput {
     title: String
     comment: String
 }
+
 type Query {
     hello: String!
     books(orderBy: BooksOrderBy = RATING_DESC, count: Int! = -1): [Book!]
@@ -25,7 +29,9 @@ type Query {
     searchBook(query: String!): [SearchBookResult!]
     search(query: String!): [SearchResult]
 }
+
 union SearchResult = Book | Review | Author | User
+
 type Book {
     id: ID!
     title: String!
@@ -37,10 +43,12 @@ type Book {
     authors: [Author]
     reviews: [Review]
 }
+
 type Author {
     id: ID!
     name: String
 }
+
 type Review {
     id: ID!
     rating: Int!
@@ -49,11 +57,13 @@ type Review {
     book: Book
     user: User
 }
+
 type User {
     id: ID!
     name: String!
     imageUrl(size: Int = 50): String
 }
+
 type SearchBookResult {
     id: ID!
     title: String
@@ -66,10 +76,12 @@ enum ImageSize {
     SMALL
     LARGE
 }
+
 enum BooksOrderBy {
     RATING_DESC
     ID_DESC
 }
+
 enum ReviewsOrderBy {
     ID_ASC
     ID_DESC

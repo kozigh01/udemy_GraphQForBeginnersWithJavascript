@@ -9,23 +9,23 @@
   - cntl-space: shows list of fields
 - Apollo GraphQL: [site](https://www.apollographql.com/) | [client](https://www.apollographql.com/client/) | [conver to 2.0](https://www.apollographql.com/docs/apollo-server/migration-two-dot/) | [tutorial](https://www.apollographql.com/docs/tutorial/introduction/)
 - Docker: [compose](https://docs.docker.com/compose/compose-file/)
-    - postgres: [compose example](https://stackoverflow.com/questions/53266285/connecting-pgadmin-to-postgres-in-docker) | [dockerhub](https://hub.docker.com/_/postgres)
-    - pgAdmin: [connect](https://stackoverflow.com/questions/25540711/docker-postgres-pgadmin-local-connection) | [volume](https://stackoverflow.com/questions/57174830/pgadmin-creates-new-random-volume-with-each-docker-compose-up)
+  - postgres: [compose example](https://stackoverflow.com/questions/53266285/connecting-pgadmin-to-postgres-in-docker) | [dockerhub](https://hub.docker.com/_/postgres)
+  - pgAdmin: [connect](https://stackoverflow.com/questions/25540711/docker-postgres-pgadmin-local-connection) | [volume](https://stackoverflow.com/questions/57174830/pgadmin-creates-new-random-volume-with-each-docker-compose-up)
 - Postgres: [project setup](https://gist.github.com/knowthen/21a5959d6b99e04d73c8b2416e405bb0)
 - Google book api: [example](https://www.googleapis.com/books/v1/volumes?q=zero+to+one)
 - Blogs:
-    - Christoffer Noring: 
-        - [Building a GraphQL Server with Node.js and Express](https://softchris.github.io/pages/graphql-express.html#why-graphql)
-        - [Creating a GraphQL Server with Apollo](https://dev.to/azure/creating-a-graphql-server-withapollo-jjj)
+  - Christoffer Noring: 
+    - [Building a GraphQL Server with Node.js and Express](https://softchris.github.io/pages/graphql-express.html#why-graphql)
+    - [Creating a GraphQL Server with Apollo](https://dev.to/azure/creating-a-graphql-server-withapollo-jjj)
 - GraphQL cheatsheet: [devhints.io](https://devhints.io/graphql#schema)  
 - Subscriptions:
-    - [not finding websocket with subscriptions](https://github.com/apollographql/apollo-server/issues/1844)
-    - [apollo docs: Subscriptions with Additional Middleware](https://github.com/apollographql/apollo-server/issues/1844)
-    - [hackernoon: GraphQL Subscriptions Using Apollo 2](https://hackernoon.com/graphql-subscriptions-using-apollo-2-3eb3184768c4)
-    - [daniele-zurico/apollo2-subscriptions-how-to](https://github.com/daniele-zurico/apollo2-subscriptions-how-to/blob/master/src/server.ts)
-
+  - [not finding websocket with subscriptions](https://github.com/apollographql/apollo-server/issues/1844)
+  - [apollo docs: Subscriptions with Additional Middleware](https://github.com/apollographql/apollo-server/issues/1844)
+  - [hackernoon: GraphQL Subscriptions Using Apollo 2](https://hackernoon.com/graphql-subscriptions-using-apollo-2-3eb3184768c4)
+  - [daniele-zurico/apollo2-subscriptions-how-to](https://github.com/daniele-zurico/apollo2-subscriptions-how-to/blob/master/src/server.ts)
 
 ## Instructions
+
 1. Clone the "mkozi" git repo referenced above
 2. Open a terminal (I use git bash) and navigate to the directory that contains the 'docker-compose.yaml' file
 3. run command `$ docker-compose up --build`
@@ -45,6 +45,7 @@
 ## Commands
 
 ### Misc - Bash
+
 ```cmd
 # remove all node_module directories
 $ find . -type d -name "node_modules"
@@ -63,6 +64,7 @@ $ curl -X POST -H "Content-type: application/json" -d '{"query}:"{book(id: \"1\"
 ```
 
 ### psql
+
 ```cmd
 $ su - postgress
 $ psql
@@ -105,6 +107,7 @@ junk=# drop database junk;
 ### Course Code
 
 #### Section 3 - First GraphQL Server
+
 ```cmd
 $ docker-compose up --build
 # in new shell window:
